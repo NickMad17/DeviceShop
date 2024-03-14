@@ -9,7 +9,7 @@ class MainUser {
     data: Session | undefined | null = null
     error: string | null | undefined = null
     loading: boolean = false
-
+    
     constructor() {
         makeAutoObservable(this);
     }
