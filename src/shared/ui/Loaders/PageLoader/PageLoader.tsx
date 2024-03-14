@@ -1,8 +1,9 @@
-import '../styleLoaders.scss'
+import Loader from "../Loader/Loader.tsx";
+
 const PageLoader = () => {
     return (
-        <div className='absolute left-0 bottom-0 flex w-[100vw] h-[100vh] justify-center items-center'>
-            <div className="loader"></div>
+        <div className='absolute right-0 bottom-0 flex w-[100vw] h-[100%] justify-center items-center' >
+            <Loader/>
         </div>
     );
 };

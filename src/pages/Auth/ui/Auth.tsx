@@ -1,9 +1,8 @@
-import {ThemeSwitcher} from "@/features/ThemeSwitcher";
-
+import {Header} from "@/widget/Header";
 const Auth = () => {
     return (
         <div>
-            <ThemeSwitcher/>
+            <Header/>
         </div>
     )
 };

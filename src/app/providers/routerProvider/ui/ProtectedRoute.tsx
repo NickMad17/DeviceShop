@@ -14,7 +14,7 @@ const ProtectedRoute = ({children}: Props) => {
 
     useEffect(() => {
         if (auth?.session === null || auth?.session === undefined) {
-            navigate(Paths.AUTH, {replace: true})
+            navigate(Paths.START, {replace: true})
         }
     }, [navigate, auth?.session]);
 
