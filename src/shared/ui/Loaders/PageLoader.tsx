@@ -1,4 +1,4 @@
-import Loader from "../Loader/Loader.tsx";
+import Loader from "./Loader.tsx";
 
 const PageLoader = () => {
     return (

@@ -214,3 +214,30 @@
 //     </>
 //   );
 // });
+
+
+import {Dialog, DialogContent, DialogTrigger} from "@/shared/shadcnui/ui/dialog.tsx";
+import {Button} from "@/shared/shadcnui/ui/button.tsx";
+import {Title} from "@radix-ui/react-dialog";
+
+interface PropsAuthForm {
+    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
+    authType: boolean
+    text: string
+}
+
+export function AuthFormDialog({authType, variant, text}: PropsAuthForm) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant={variant}>{text}</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[600px] sm:min-h-[600px]">
+                <div className='flex flex-col'>
+                    <Title>{authType ? "Sign Up" : "Sign in"}</Title>
+                    <Button type="submit">Save changes</Button>
+                </div>
+            </DialogContent>
+        </Dialog>
+    )
+}
