@@ -1,5 +1,5 @@
 import supabase from "@/app/config/supabase.ts";
-import MainUser from "../../store/MainUser.ts";
+import MainUser from "../store/MainUser.ts";
 
 export const login = async (email: string, password: string) => {
     MainUser.setLoading(true)

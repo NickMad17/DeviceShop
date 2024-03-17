@@ -1,5 +1,5 @@
-import {AuthFormDialog} from "@/widget/AuthForm/ui/AuthFormDialog.tsx";
+import {FormDialog} from "@/widget/AuthForm/ui/FormDialog.tsx";
 
 export {
-    AuthFormDialog
+    FormDialog
 }

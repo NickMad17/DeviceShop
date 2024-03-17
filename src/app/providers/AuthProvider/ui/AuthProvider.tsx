@@ -1,7 +1,7 @@
 import {createContext, Dispatch, PropsWithChildren, ReactNode, SetStateAction, useState} from "react";
 import {Session} from "@supabase/supabase-js";
 
-interface UserSessionType {
+export interface UserSessionType {
     session: Session | null | undefined
     setSession: Dispatch<SetStateAction<Session | null | undefined>>
 }

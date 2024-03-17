@@ -1,14 +1,13 @@
 import supabase from "@/app/config/supabase.ts";
-import MainUser from "../../store/MainUser.ts";
+import MainUser from "../store/MainUser.ts";
 
 
-export const userPostPublicDataBase = async (id: string | undefined, first_name: string, last_name: string) => {
+export const userPostPublicDataBase = async (id: string | undefined, email: string) => {
     const {data, error} = await supabase
-        .from('profiles')
+        .from('users')
         .insert({
             id: id ? id : "",
-            first_name,
-            last_name
+            email
         })
     if (data) {
         console.log(data)

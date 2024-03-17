@@ -9,64 +9,84 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      friends: {
+      cart: {
         Row: {
-          friend_id: string | null
-          id: number
-          status: boolean | null
-          user_id: string
+          id: string
+          position_count: number | null
+          products: number[] | null
         }
         Insert: {
-          friend_id?: string | null
-          id?: number
-          status?: boolean | null
-          user_id: string
+          id: string
+          position_count?: number | null
+          products?: number[] | null
         }
         Update: {
-          friend_id?: string | null
-          id?: number
-          status?: boolean | null
-          user_id?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          age: number | null
-          city: string | null
-          description: string | null
-          first_name: string | null
-          gender: string | null
-          hobby: string[] | null
-          id: string
-          last_name: string | null
-          status: string | null
-        }
-        Insert: {
-          age?: number | null
-          city?: string | null
-          description?: string | null
-          first_name?: string | null
-          gender?: string | null
-          hobby?: string[] | null
-          id: string
-          last_name?: string | null
-          status?: string | null
-        }
-        Update: {
-          age?: number | null
-          city?: string | null
-          description?: string | null
-          first_name?: string | null
-          gender?: string | null
-          hobby?: string[] | null
           id?: string
-          last_name?: string | null
-          status?: string | null
+          position_count?: number | null
+          products?: number[] | null
         }
         Relationships: [
           {
-            foreignKeyName: "public_profiles_id_fkey"
+            foreignKeyName: "public_card_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      products: {
+        Row: {
+          colors: string[] | null
+          created_at: string
+          description: string | null
+          favorites: boolean
+          id: number
+          name: string
+          price: number
+          type: string
+        }
+        Insert: {
+          colors?: string[] | null
+          created_at?: string
+          description?: string | null
+          favorites?: boolean
+          id?: number
+          name: string
+          price: number
+          type: string
+        }
+        Update: {
+          colors?: string[] | null
+          created_at?: string
+          description?: string | null
+          favorites?: boolean
+          id?: number
+          name?: string
+          price?: number
+          type?: string
+        }
+        Relationships: []
+      }
+      users: {
+        Row: {
+          email: string | null
+          id: string
+          role: string
+        }
+        Insert: {
+          email?: string | null
+          id: string
+          role?: string
+        }
+        Update: {
+          email?: string | null
+          id?: string
+          role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_profils_id_fkey"
             columns: ["id"]
             isOneToOne: true
             referencedRelation: "users"

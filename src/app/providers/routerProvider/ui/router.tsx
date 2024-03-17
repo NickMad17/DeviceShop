@@ -1,7 +1,7 @@
 import {createHashRouter} from "react-router-dom";
 import {Paths} from "../types";
 import ProtectedRoute from "@/app/providers/routerProvider/ui/ProtectedRoute.tsx";
-import {Auth, Home, Start} from "@/pages";
+import {Account, FavoritesPage, Home, Start} from "@/pages";
 
 export const router = createHashRouter([
     {
@@ -17,12 +17,23 @@ export const router = createHashRouter([
         element: <Start/>
     },
     {
-        path: Paths.AUTH,
-        element: <Auth/>
-    },
-    {
         path: Paths.ERROR,
         element: <p>Error</p>
     },
-
+    {
+        path: Paths.ACCOUNT,
+        element: (
+            <ProtectedRoute>
+                <Account/>
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: Paths.PRODUCT,
+        element: (
+            <ProtectedRoute>
+                <FavoritesPage/>
+            </ProtectedRoute>
+        )
+    },
 ])

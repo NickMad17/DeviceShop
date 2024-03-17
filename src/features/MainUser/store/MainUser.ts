@@ -1,7 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import {Session} from "@supabase/supabase-js";
 
-// TODO: Убрать занос в локал стор (нужно лишь для отладки)
 
 class MainUser {
     // @ts-ignore
@@ -9,21 +8,26 @@ class MainUser {
     data: Session | undefined | null = null
     error: string | null | undefined = null
     loading: boolean = false
-    
+    role: null | string = null
+
     constructor() {
         makeAutoObservable(this);
     }
 
-    setUser(data: Session | undefined | null, errorMessege?: string) {
-        if (data !== undefined && data !== null && errorMessege == undefined) {
+    setUser(data: Session | undefined | null, errorMessage?: string) {
+        if (data !== undefined && data !== null && errorMessage == undefined) {
             this.data = data;
         } else {
-            this.error = errorMessege
+            this.error = errorMessage
         }
     }
 
     setLoading(isLoading: boolean) {
         this.loading = isLoading
+    }
+
+    setUserRole = (role: string) => {
+        this.role = role
     }
 }
 

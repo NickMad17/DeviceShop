@@ -1,8 +1,8 @@
 import supabase from "@/app/config/supabase.ts";
-import MainUser from "../../store/MainUser.ts";
+import MainUser from "../store/MainUser.ts";
 import {userPostPublicDataBase} from "./userPostDataBase.ts";
 
-export const registration = async (email: string, password: string, first_name: string, last_name: string) => {
+export const registration = async (email: string, password: string) => {
     MainUser.setLoading(true)
     const {data, error} = await supabase.auth.signUp({
         email: email,
@@ -15,8 +15,8 @@ export const registration = async (email: string, password: string, first_name: 
         localStorage.setItem('token', JSON.stringify(data.session))
         MainUser.setUser(data.session)
         setTimeout(() => {
-            userPostPublicDataBase(data.user?.id, first_name, last_name)
-        }, )
+            userPostPublicDataBase(data.user?.id, email)
+        },500)
     }
     if (error) {
         MainUser.setUser(data.session, error.message)

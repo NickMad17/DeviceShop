@@ -1,6 +1,8 @@
 export enum Paths {
     ERROR = '*',
-    AUTH = '/start/auth',
     HOME = "/",
-    START = '/start'
+    START = '/start',
+    ACCOUNT = '/account',
+    FAVORITES = '/favorites',
+    PRODUCT = '/product'
 }

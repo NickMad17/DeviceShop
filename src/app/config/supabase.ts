@@ -6,5 +6,5 @@ import {Database} from "@/app/types/supabase.ts";
 const supabaseUrl = import.meta.env.VITE_APP_SUPARBASE_URL;
 const supabaseKey = import.meta.env.VITE_APP_SUPARBASE_KEY;
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
-
+export const baseImageUrl = `${supabaseUrl}/storage/v1/object/public/`
 export default supabase;

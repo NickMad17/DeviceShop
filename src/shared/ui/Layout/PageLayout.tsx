@@ -1,4 +1,5 @@
 import {ReactNode} from "react";
+import {Toaster} from "@/shared/shadcnui/ui/sonner.tsx";
 
 interface Props {
     children: ReactNode
@@ -6,9 +7,10 @@ interface Props {
 
 const PageLayout = ({children}: Props) => {
     return (
-        <div className='pt-20 px-44'>
+        <main className='pt-20 px-20'>
             {children}
-        </div>
+            <Toaster richColors/>
+        </main>
     );
 };
 
