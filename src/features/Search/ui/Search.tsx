@@ -35,7 +35,7 @@ const Search = () => {
 
     return (
         <>
-            <div className='w-full relative'>
+            <div className='w-full relative max-[877px]:hidden'>
                 <Input onInput={change} onFocus={focus} onBlur={blur} value={text}
                        placeholder="Type a command or search..."/>
                 {text.length !== 0 && <X onClick={reset} className='absolute right-2 top-[6px] hover:cursor-pointer'/>}
@@ -61,7 +61,7 @@ const Search = () => {
                 )}
             </div>
 
-            <Button onClick={search}>Поиск</Button>
+            <Button className='max-[877px]:hidden' onClick={search}>Поиск</Button>
         </>
     );
 };
