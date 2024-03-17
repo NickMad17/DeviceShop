@@ -1,2 +1,2 @@
 ## Ссылка на задеплоеный проект
-[https://acquaintances.vercel.app/](https://shoes-shop-six-blond.vercel.app/#/start)
+shoes-shop-hpgtb889c-nickmad17s-projects.vercel.app
