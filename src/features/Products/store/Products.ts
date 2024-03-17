@@ -11,6 +11,12 @@ export interface Product {
     favorites: boolean
 }
 
+export enum SearchType {
+    NAME = 'name',
+    TYPE = 'type',
+    ALL = ''
+}
+
 class Products {
     data: Product[] | undefined | null = null
     reserveData: Product[] | undefined | null = null
@@ -37,13 +43,21 @@ class Products {
         }
     }
 
-    setProductSearch = (text: string) => {
-        this.data = this.reserveData?.filter((el) => {
-            console.log(el.name, text)
-            if (el.name.toLowerCase().startsWith(text.toLowerCase())) {
-                return el
-            }
-        })
+    setProductSearch = (text: string, params: SearchType) => {
+        if (!(params === SearchType.ALL)) {
+            this.data = this.reserveData?.filter((el) => {
+                if (params === SearchType.NAME) {
+                    if (el[params].toLowerCase().startsWith(text.toLowerCase())) {
+                        return el
+                    }
+                }
+                if (el[params] === text) {
+                    return el
+                }
+            })
+        } else {
+            this.data = this.reserveData
+        }
     }
 
 

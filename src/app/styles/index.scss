@@ -6,6 +6,8 @@ body{
   &::-webkit-scrollbar{
     display: none;
   }
+  width: 100dvw;
+  height: 100dvh;
 }
 
 @layer base {

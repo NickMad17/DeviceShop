@@ -36,6 +36,11 @@ const FormRegistration = () => {
                 if (MainUser.error) {
                     toast.error(MainUser.error)
                     MainUser.error = null
+                    setTimeout(() => {
+                        if (localStorage.getItem('token')){
+                            navigate(Paths.HOME)
+                        }
+                    },300)
                 } else {
                     toast.success('Access')
                     auth?.setSession(MainUser.data);

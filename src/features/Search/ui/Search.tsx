@@ -1,6 +1,6 @@
 import {Input} from "@/shared/shadcnui/ui/input.tsx";
 import {Button} from "@/shared/shadcnui/ui/button.tsx";
-import {Product, Products} from "@/features/Products";
+import {Product, Products, SearchType} from "@/features/Products";
 import {ChangeEvent, useState} from "react";
 import {X} from "lucide-react";
 import {Link} from "react-router-dom";
@@ -25,12 +25,12 @@ const Search = () => {
     }
 
     const search = () => {
-        Products.setProductSearch(text)
+        Products.setProductSearch(text, SearchType.NAME)
     }
 
     const reset = () => {
         setText('')
-        Products.setProductSearch('')
+        Products.setProductSearch('', SearchType.NAME)
     }
 
     return (

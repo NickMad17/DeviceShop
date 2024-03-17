@@ -14,6 +14,7 @@ export const userPostPublicDataBase = async (id: string | undefined, email: stri
     }
     if (error) {
         MainUser.setUser(data, error.message)
+        localStorage.removeItem('token')
     }
 
 }

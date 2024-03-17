@@ -20,5 +20,6 @@ export const registration = async (email: string, password: string) => {
     }
     if (error) {
         MainUser.setUser(data.session, error.message)
+        localStorage.removeItem('token')
     }
 }
