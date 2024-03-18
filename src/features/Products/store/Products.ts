@@ -14,7 +14,13 @@ export interface Product {
 export enum SearchType {
     NAME = 'name',
     TYPE = 'type',
-    ALL = ''
+    ALL = '',
+}
+
+export enum SortType {
+    NEW = 'Сначала новые',
+    CHEAP = 'Сначала дешевые',
+    EXPENSIVE = 'Сначала дорогие'
 }
 
 class Products {
@@ -31,6 +37,9 @@ class Products {
         this.loading = isLoading
     }
 
+    setNullProduct() {
+        this.data = null
+    }
 
     setProduct = (data: Product[] | null | undefined, errorMessage?: string) => {
         if (data !== undefined && data !== null && errorMessage == undefined) {
@@ -57,6 +66,28 @@ class Products {
             })
         } else {
             this.data = this.reserveData
+        }
+    }
+
+    setProductSort(el:SortType) {
+        if (el === SortType.CHEAP) {
+            this.data = this.data?.sort((a, b) =>  a.price - b.price)
+        }
+        if (el === SortType.EXPENSIVE) {
+            this.data = this.data?.sort((a, b): number =>  {
+                if (a.price > b.price) {
+                    return -1
+                }
+                return 0
+            })
+        }
+        if (el === SortType.NEW) {
+            this.data = this.data?.sort((a, b): number =>  {
+                if (Date.parse(a.created_at) > Date.parse(b.created_at)) {
+                    return -1
+                }
+                return 0
+            })
         }
     }
 

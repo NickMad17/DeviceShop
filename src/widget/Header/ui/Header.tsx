@@ -12,7 +12,7 @@ const Header = () => {
     const locate = useLocation().pathname
     return (
         <div
-            className='fixed w-[100vw] h-14 rounded-lg border-b shadow-md flex justify-between items-center gap-2 px-10 bg-background z-20 rounded-t-[0]'>
+            className='fixed w-[100vw] h-14 rounded-[0] border-b shadow-md flex justify-between items-center gap-2 px-10 bg-background z-20 '>
             <Link to={Paths.HOME}>
                 <Logo/>
             </Link>

@@ -3,6 +3,8 @@ import {PageLayout, TabGradientBg} from "@/shared";
 import {useTheme} from "@/app/providers/ThemeProvider";
 import {SortingBox} from "@/widget/SortingBox";
 import {ProductBox} from "@/widget/ProductBox";
+import {NavBar} from "@/widget/NavBar";
+import {getProducts} from "@/features/Products";
 
 const Home = () => {
     const {theme} = useTheme()
@@ -12,8 +14,11 @@ const Home = () => {
             <Header/>
             {theme !== 'light' && <TabGradientBg containerClassName='fixed z-[-10]'/>}
             <PageLayout>
-                <SortingBox/>
-                <ProductBox/>
+                <NavBar/>
+                <div className="center">
+                    <SortingBox/>
+                    <ProductBox getProducts={getProducts}/>
+                </div>
             </PageLayout>
         </>
     );

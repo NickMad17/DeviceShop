@@ -3,7 +3,7 @@ import {Card} from "@/shared/shadcnui/ui/card.tsx";
 
 const SkeletonProductCard = () => {
     return (
-        <Card className=" w-[350px] min-h-[550px] rounded-3xl flex flex-col justify-between p-6">
+        <Card className="w-[350px] min-h-[550px] rounded-3xl flex flex-col justify-between p-6">
             <div className="flex flex-col gap-8">
                 <div className="flex justify-center mt-5">
                     <Skeleton className="bg-input h-[250px] w-[100%]  rounded-3xl"/>

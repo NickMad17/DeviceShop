@@ -1,4 +1,4 @@
-import {getProducts, Products} from "@/features/Products";
+import {Products} from "@/features/Products";
 import {CardProduct, SkeletonProductCard} from "@/widget/CardProduct";
 import {baseImageUrl} from "@/app/config/supabase.ts";
 import {Alert, AlertDescription, AlertTitle} from "@/shared/shadcnui/ui/alert.tsx";
@@ -6,8 +6,13 @@ import {TriangleAlert} from "lucide-react";
 import {useEffect} from "react";
 import {observer} from "mobx-react-lite";
 
-const ProductBox = observer(() => {
+interface Props {
+    getProducts: () => Promise<void>
+}
+
+const ProductBox = observer(({getProducts}: Props) => {
     useEffect(() => {
+        Products.setNullProduct()
         Products.setLoading(true)
         getProducts()
             .finally(
@@ -17,7 +22,7 @@ const ProductBox = observer(() => {
 
     return (
         <>
-            <div className='flex gap-2 flex-wrap justify-center'>
+            <div className='flex gap-3 flex-wrap justify-center'>
 
                 {Products.data && Products.data?.map((product) => {
                     return (
@@ -30,32 +35,34 @@ const ProductBox = observer(() => {
                 })}
             </div>
 
-            <div className='flex gap-3 flex-wrap justify-center'>
-                {Products.error && (
-                    <Alert variant='destructive'>
-                        <TriangleAlert className="h-4 w-4 "/>
-                        <AlertTitle>Error</AlertTitle>
-                        <AlertDescription>
-                            {Products.error}
-                        </AlertDescription>
-                    </Alert>
-                )}
-                {Products.loading && (
-                    <>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                        <SkeletonProductCard/>
-                    </>
-                )}
+            <div className='absolute left-0 top-auto center'>
+                <div className='flex gap-3 flex-wrap justify-center'>
+                    {Products.error && (
+                        <Alert variant='destructive'>
+                            <TriangleAlert className="h-4 w-4 "/>
+                            <AlertTitle>Error</AlertTitle>
+                            <AlertDescription>
+                                {Products.error}
+                            </AlertDescription>
+                        </Alert>
+                    )}
+                    {Products.loading && (
+                        <>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                            <SkeletonProductCard/>
+                        </>
+                    )}
+                </div>
             </div>
         </>
     );

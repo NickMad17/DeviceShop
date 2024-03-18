@@ -10,6 +10,10 @@ body{
   height: 100dvh;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,6 +70,21 @@ body{
     @apply bg-background text-foreground;
   }
 }
+
+.center {
+  padding-left: calc(50% - 555px);
+  padding-right: calc(50% - 555px);
+  @media (max-width: 1200px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 1118px) and (min-width: 800px){
+    padding-left: calc(50% - 380px);
+    padding-right: calc(50% - 380px);
+  }
+}
+
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;

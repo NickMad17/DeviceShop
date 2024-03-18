@@ -29,7 +29,7 @@ export const router = createHashRouter([
         )
     },
     {
-        path: Paths.PRODUCT,
+        path: Paths.FAVORITES,
         element: (
             <ProtectedRoute>
                 <FavoritesPage/>

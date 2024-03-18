@@ -1,53 +1,41 @@
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/shared/shadcnui/ui/select.tsx";
-import {Products, SearchType} from "@/features/Products";
+import {Select, SelectContent, SelectTrigger, SelectValue} from "@/shared/shadcnui/ui/select.tsx";
 import {observer} from "mobx-react-lite";
 import {useState} from "react";
 import {Check} from "lucide-react";
+import {Products, SortType} from "@/features/Products";
 
 const SortingBox = observer(() => {
-    const typeSort = ["Все", 'Мониторы', 'Компьютеры', 'Аксессуары', 'Ноутбуки']
-    const [thisElement, setThisElement] = useState<string>('Все')
-    const addSort = (el: string) => {
+    const sortParams: SortType[] = [SortType.NEW, SortType.CHEAP, SortType.EXPENSIVE]
+    const [thisElement, setThisElement] = useState<string>('Нет сортировки')
+    const [isOpen, setOpen] = useState(false)
+    const addSort = (el: SortType) => {
         setThisElement(el)
-        if (el === 'Все') {
-            Products.setProductSearch(el, SearchType.ALL)
-
-        } else {
-            Products.setProductSearch(el, SearchType.TYPE)
-        }
+        Products.setProductSort(el)
     }
+
     return (
         <div className='bg-transparent  rounded-lg mb-6 p-[10px] flex justify-end items-center flex-wrap'>
             <div className="flex justify-end gap-5 flex-wrap">
                 <div className="w-[180px] bg-background">
-                    <Select>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder={thisElement}/>
-                        </SelectTrigger>
-                        <SelectContent>
-                            {typeSort?.map(el => {
-                                return (
-                                    <div className='p-1 flex justify-between cursor-pointer hover:bg-input' key={el}
-                                         onClick={() => addSort(el)}>
-                                        <p className='pl-2'>{el}</p>
-                                        {el === thisElement && <Check className='w-4 mr-2'/>}
-                                    </div>
-                                )
-                            })}
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div className="w-[180px] bg-input">
-                    <Select>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Сортровка"/>
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="light">Сначала новые</SelectItem>
-                            <SelectItem value="dark">Сначаала дешевые</SelectItem>
-                            <SelectItem value="system">Сначала дорогие</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <div onClick={() => setOpen(!isOpen)}>
+                        <Select open={isOpen}>
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder={thisElement}/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                {sortParams.map(el => {
+                                    return (
+                                        <div onClick={() => addSort(el)}
+                                             key={el}
+                                             className='text-sm py-1.5 px-2 hover:bg-input cursor-pointer flex justify-between items-center'>
+                                            {el}
+                                            {el === thisElement && <Check className='w-3 mr-2'/>}
+                                        </div>
+                                    )
+                                })}
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
             </div>
         </div>

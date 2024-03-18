@@ -21,9 +21,9 @@ interface CardProps extends React.ComponentProps<typeof Card> {
 export const CardProduct = observer(({className, productId, name, url, price, favorites, ...props}: CardProps) => {
     const [cart, setCart] = useState<boolean>(false)
     const [productCount, setProductCount] = useState<number>(0)
-
+    const [favoritesClient, setFavoritesClient] = useState<boolean>(favorites)
     const handleFavorites = () => {
-        setFavorites(!favorites, productId)
+        setFavorites(!favorites, productId).finally(() => setFavoritesClient(!favoritesClient))
     }
 
     const addToCart = () => {
@@ -34,7 +34,6 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
     const increment = () => {
         setProductCount(prevState => {
             return prevState + 1
-
         })
     }
 
@@ -52,7 +51,7 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
     return (
         <BackgroundGradient>
             <Card
-                className={cn("min-[1640px]:w-[350px] min-[1200px]:w-[320px] w-[320px] min-h-[545px] max-[700px]:min-h-[450px] rounded-3xl", className)} {...props}>
+                className={cn("w-[350px] min-h-[545px] max-[700px]:min-h-[450px] rounded-3xl", className)} {...props}>
                 <CardContent className="grid gap-4 mt-7">
 
                     <div className='w-[100%] overflow-hidden'>
@@ -71,7 +70,7 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
                             <p className='text-2xl font-medium'><span
                                 className='font-bold'>{price}</span> руб</p>
                             <Button variant='ghost' className='p-2' onClick={handleFavorites}>
-                                <Heart className={favorites ? 'fill-foreground' : ''}/>
+                                <Heart className={favoritesClient ? 'fill-foreground' : ''}/>
                             </Button>
                         </div>
                     </div>

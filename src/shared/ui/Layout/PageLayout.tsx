@@ -7,7 +7,7 @@ interface Props {
 
 const PageLayout = ({children}: Props) => {
     return (
-        <main className='pt-20 px-20'>
+        <main className='pt-[55px] pb-12'>
             {children}
             <Toaster richColors/>
         </main>

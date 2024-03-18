@@ -1,8 +1,6 @@
 import supabase from "@/app/config/supabase.ts";
-import {getProducts} from "@/features/Products";
 
-export const setFavorites = (favorites: boolean, productId: number) => {
-    const push = async () => {
+export const setFavorites = async (favorites: boolean, productId: number) => {
         const {data, error} = await supabase
             .from('products')
             .update({favorites})
@@ -15,8 +13,4 @@ export const setFavorites = (favorites: boolean, productId: number) => {
         if (error) {
             console.log(error)
         }
-    }
-    return push().then(
-        () => getProducts()
-    )
 }
