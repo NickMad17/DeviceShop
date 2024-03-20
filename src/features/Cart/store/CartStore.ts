@@ -8,7 +8,7 @@ export interface CartType {
 
 class CartStore {
     detailedData: null | Product[] = null
-    data: null | CartType[] = null
+    data: null | CartType[]  = null
     cartCounter: null | number = null
     loading: boolean = false
     error: undefined | null | string = null
