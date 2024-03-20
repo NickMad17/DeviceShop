@@ -9,9 +9,9 @@ export const getCart = async () => {
             .select('products')
             .eq('id', id)
         if (data) {
-            const dataProducts = data[0].products
+            const dataProducts = data[0]?.products
             CartStore.setCart(dataProducts)
-            CartStore.setCounter(dataProducts.length)
+            CartStore.setCounter(dataProducts?.length)
         }
         if (error) {
             CartStore.setCart(null,error.message)

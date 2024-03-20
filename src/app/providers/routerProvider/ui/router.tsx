@@ -1,7 +1,7 @@
 import {createHashRouter} from "react-router-dom";
 import {Paths} from "../types";
 import ProtectedRoute from "@/app/providers/routerProvider/ui/ProtectedRoute.tsx";
-import {Account, CartPage, FavoritesPage, Home, Start} from "@/pages";
+import {Account, CartPage, FavoritesPage, Home, ProductPage, Start} from "@/pages";
 
 export const router = createHashRouter([
     {
@@ -41,6 +41,14 @@ export const router = createHashRouter([
         element: (
             <ProtectedRoute>
                 <CartPage/>
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: `${Paths.PRODUCT}/:productId`,
+        element: (
+            <ProtectedRoute>
+                <ProductPage/>
             </ProtectedRoute>
         )
     },

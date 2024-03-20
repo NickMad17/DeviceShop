@@ -60,9 +60,9 @@ const FormRegistration = () => {
                         <FormField control={form.control} name="emailAddress" render={({field}) => {
                             return (
                                 <FormItem className='pb-5'>
-                                    <FormLabel>Email Address</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder='Email Adress'  {...field}/>
+                                        <Input placeholder='Введите почту'  {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -71,9 +71,9 @@ const FormRegistration = () => {
                         <FormField control={form.control} name="password" render={({field}) => {
                             return (
                                 <FormItem className='pb-5'>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>Пароль</FormLabel>
                                     <FormControl>
-                                        <Input placeholder='Password' type='password' {...field}/>
+                                        <Input placeholder='Введите пароль' type='password' {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -82,16 +82,16 @@ const FormRegistration = () => {
                         <FormField control={form.control} name="confirmPassword" render={({field}) => {
                             return (
                                 <FormItem className='pb-5'>
-                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormLabel>Подтвердение пароля</FormLabel>
                                     <FormControl>
-                                        <Input placeholder='Confirm Password' type='password' {...field}/>
+                                        <Input placeholder='Подтвердите пароль' type='password' {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
                             )
                         }}/>
                     </div>
-                    <Button type="submit" className='w-[100%]' >Save changes</Button>
+                    <Button type="submit" className='w-[100%]' >Зарегистрироваться</Button>
                 </form>
             </Form>
         )

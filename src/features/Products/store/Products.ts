@@ -91,6 +91,11 @@ class Products {
         }
     }
 
+    reset = () => {
+        this.data = null
+        this.reserveData = null
+    }
+
 
 }
 

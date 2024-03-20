@@ -1,18 +1,14 @@
 import {Card, CardContent, CardFooter, CardTitle} from "@/shared/shadcnui/ui/card.tsx";
 import {cn} from "@/shared/lib/utils.ts";
-import {Button} from "@/shared/shadcnui/ui/button.tsx";
-import React, {useState} from "react";
 import {BackgroundGradient} from "@/shared/ui/Layout/BackgroundGradient.tsx";
-import {Heart} from "lucide-react";
 import {Link} from "react-router-dom";
 import {Paths} from "@/app/providers/routerProvider";
-import {setFavorites} from "@/features/Products";
 import {observer} from "mobx-react-lite";
 import {ButtonAddToCart} from "@/features/ButtonAddToCart";
-import {toast} from "sonner";
+import {ComponentProps} from "react";
 
 
-interface CardProps extends React.ComponentProps<typeof Card> {
+interface CardProps extends ComponentProps<typeof Card> {
     productId: number
     name: string | null
     url: string
@@ -21,20 +17,22 @@ interface CardProps extends React.ComponentProps<typeof Card> {
 }
 
 export const CardProduct = observer(({className, productId, name, url, price, favorites, ...props}: CardProps) => {
-    const [favoritesClient, setFavoritesClient] = useState<boolean>(favorites)
-    const [disabled, setDisebled] = useState<boolean>(false)
-    const handleFavorites = () => {
-        setDisebled(true)
-        setFavorites(!favorites, productId).finally(() => {
-            setFavoritesClient(!favoritesClient)
-            if (!favoritesClient) {
-                toast.message('Товар добавлен в избранное')
-            } else {
-                toast.message('Товар удален из избранного')
-            }
-            setDisebled(false)
-        })
-    }
+    // const [favoritesClient, setFavoritesClient] = useState<boolean>(favorites)
+    // const [disabled, setDisabled] = useState<boolean>(false)
+    // const handleFavorites = () => {
+        //TODO данная функия находится в разработке
+        console.log()
+        // setDisabled(true)
+        // setFavorites(!favorites, productId).finally(() => {
+        //     setFavoritesClient(!favoritesClient)
+        //     if (!favoritesClient) {
+        //         toast.message('Товар добавлен в избранное')
+        //     } else {
+        //         toast.message('Товар удален из избранного')
+        //     }
+        //     setDisabled(false)
+        // })
+    // }
 
 
     return (
@@ -50,7 +48,7 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
                                 src={url} alt='product'/>
                         </div>
                         <div className=" h-[90px] ">
-                            <Link to={Paths.PRODUCT}>
+                            <Link to={`${Paths.PRODUCT}/${productId}`}>
                                 <CardTitle
                                     className='text-2xl line-clamp-2 hover:text-blue-400 transition'>{name}</CardTitle>
                             </Link>
@@ -58,9 +56,9 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
                         <div className='flex justify-between'>
                             <p className='text-2xl font-medium'><span
                                 className='font-bold'>{price}</span> руб</p>
-                            <Button disabled={disabled} variant='ghost' className='p-2' onClick={handleFavorites}>
-                                <Heart className={favoritesClient ? 'fill-foreground' : ''}/>
-                            </Button>
+                            {/*<Button disabled={disabled} variant='ghost' className='p-2' onClick={handleFavorites}>*/}
+                            {/*    <Heart className={favoritesClient ? 'fill-foreground' : ''}/>*/}
+                            {/*</Button>*/}
                         </div>
                     </div>
                 </CardContent>

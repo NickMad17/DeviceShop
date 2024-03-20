@@ -42,7 +42,7 @@ const ButtonAddToCart = observer(({productId}: Props) => {
                         <Button disabled={disabled} onClick={decrement} variant='secondary' className='w-20 '>
                             <p className='text-xl mb-1'>-</p>
                         </Button>
-                        <p className='text-[19px]'>{disabled ? <Loader className='h-7 w-7'/> : data}</p>
+                        <p className='text-[19px]'>{disabled ? <Loader className='h-6 w-6'/> : data}</p>
                         <Button disabled={disabled} onClick={increment} variant='secondary' className='w-20 '>
                             <p className='text-xl mb-1'>+</p>
                         </Button>

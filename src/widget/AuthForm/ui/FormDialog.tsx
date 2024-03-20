@@ -25,7 +25,7 @@ export const FormDialog = observer(
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] sm:min-h-[600px]">
                     <div className='flex flex-col'>
-                        <Title className='text-center text-3xl'>{isReg ? "Sign Up" : "Sign in"}</Title>
+                        <Title className='text-center text-3xl'>{isReg ? "Регистрация" : "Войти"}</Title>
                         {MainUser.loading
                             ? (<div className='h-[100%] w-[100%] flex justify-center items-center'>
                                 <Loader/>

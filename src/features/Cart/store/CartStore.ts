@@ -43,6 +43,12 @@ class CartStore {
             this.cartCounter = null
         }
     }
+
+    reset = () => {
+        this.detailedData = null
+        this.data = null
+        this.cartCounter = null
+    }
 }
 
 export default new CartStore()

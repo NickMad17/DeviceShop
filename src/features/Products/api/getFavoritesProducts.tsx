@@ -7,6 +7,7 @@ export const getFavoritesProducts = async () => {
         .select('*')
         .eq('favorites', true)
     if (data) {
+        console.log(data)
         Products.setProduct(data)
     }
 
