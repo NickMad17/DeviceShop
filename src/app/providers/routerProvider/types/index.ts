@@ -4,5 +4,6 @@ export enum Paths {
     START = '/start',
     ACCOUNT = '/account',
     FAVORITES = '/favorites',
-    PRODUCT = '/product'
+    PRODUCT = '/product',
+    CART = '/cart',
 }

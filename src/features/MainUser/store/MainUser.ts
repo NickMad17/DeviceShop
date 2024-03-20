@@ -4,7 +4,7 @@ import {Session} from "@supabase/supabase-js";
 
 class MainUser {
     // @ts-ignore
-    id:  | null | undefined = JSON.parse(localStorage.getItem('token'))?.user?.id || null
+    id:  | null | undefined| string = JSON.parse(localStorage.getItem('token'))?.user?.id || null
     data: Session | undefined | null = null
     error: string | null | undefined = null
     loading: boolean = false

@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import {cn} from "@/shared/lib/utils.ts";
 import {Paths} from "@/app/providers/routerProvider";
 
-const Favorites = () => {
+const FavoritesIcon = () => {
     const locate = useLocation().pathname
     return (
         <Link to={Paths.FAVORITES}>
@@ -16,4 +16,4 @@ const Favorites = () => {
     );
 };
 
-export default Favorites;
+export default FavoritesIcon;

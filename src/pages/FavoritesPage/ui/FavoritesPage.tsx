@@ -8,7 +8,7 @@ const FavoritesPage = () => {
         <>
         <Header/>
             <PageLayout>
-                <h2 className='text-3xl font-medium mt-[80px] text-center mb-10 '>Избранное</h2>
+                <h2 className='text-3xl font-medium mt-5 text-center mb-6'>Избранное</h2>
                 <ProductBox getProducts={getFavoritesProducts}/>
             </PageLayout>
         </>

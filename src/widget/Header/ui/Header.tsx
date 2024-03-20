@@ -1,12 +1,12 @@
 import {ThemeSwitcher} from "@/features/ThemeSwitcher";
-import Cart from "@/shared/ui/icons/Cart.tsx";
-import {Favorites} from "@/shared";
+import {FavoritesIcon} from "@/shared";
 import {Avatar,} from "@/shared/shadcnui/ui/avatar.tsx";
 import Logo from "@/shared/ui/Logo.tsx";
 import {UserRound} from "lucide-react";
 import {Link, useLocation} from "react-router-dom";
 import {Paths} from "@/app/providers/routerProvider";
 import {Search} from "@/features/Search";
+import {Cart} from "@/features/Cart";
 
 const Header = () => {
     const locate = useLocation().pathname
@@ -21,7 +21,7 @@ const Header = () => {
             )}
             <div className="flex gap-1 ">
                 <ThemeSwitcher/>
-                <Favorites/>
+                <FavoritesIcon/>
                 <Cart/>
                 <Link to={Paths.ACCOUNT}>
                     <Avatar className='ml-3 flex bg-accent justify-center items-center'>

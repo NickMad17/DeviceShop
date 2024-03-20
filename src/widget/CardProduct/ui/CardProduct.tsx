@@ -3,11 +3,13 @@ import {cn} from "@/shared/lib/utils.ts";
 import {Button} from "@/shared/shadcnui/ui/button.tsx";
 import React, {useState} from "react";
 import {BackgroundGradient} from "@/shared/ui/Layout/BackgroundGradient.tsx";
-import {Heart, Plus} from "lucide-react";
+import {Heart} from "lucide-react";
 import {Link} from "react-router-dom";
 import {Paths} from "@/app/providers/routerProvider";
 import {setFavorites} from "@/features/Products";
 import {observer} from "mobx-react-lite";
+import {ButtonAddToCart} from "@/features/ButtonAddToCart";
+import {toast} from "sonner";
 
 
 interface CardProps extends React.ComponentProps<typeof Card> {
@@ -19,35 +21,22 @@ interface CardProps extends React.ComponentProps<typeof Card> {
 }
 
 export const CardProduct = observer(({className, productId, name, url, price, favorites, ...props}: CardProps) => {
-    const [cart, setCart] = useState<boolean>(false)
-    const [productCount, setProductCount] = useState<number>(0)
     const [favoritesClient, setFavoritesClient] = useState<boolean>(favorites)
+    const [disabled, setDisebled] = useState<boolean>(false)
     const handleFavorites = () => {
-        setFavorites(!favorites, productId).finally(() => setFavoritesClient(!favoritesClient))
-    }
-
-    const addToCart = () => {
-        setProductCount(1)
-        setCart(!cart)
-    }
-
-    const increment = () => {
-        setProductCount(prevState => {
-            return prevState + 1
-        })
-    }
-
-    const decrement = () => {
-        setProductCount(prevState => {
-            const value = prevState - 1
-            if (value === 0) {
-                setCart(false)
+        setDisebled(true)
+        setFavorites(!favorites, productId).finally(() => {
+            setFavoritesClient(!favoritesClient)
+            if (!favoritesClient) {
+                toast.message('Товар добавлен в избранное')
+            } else {
+                toast.message('Товар удален из избранного')
             }
-            return value
+            setDisebled(false)
         })
-
-        console.log(productCount)
     }
+
+
     return (
         <BackgroundGradient>
             <Card
@@ -69,31 +58,14 @@ export const CardProduct = observer(({className, productId, name, url, price, fa
                         <div className='flex justify-between'>
                             <p className='text-2xl font-medium'><span
                                 className='font-bold'>{price}</span> руб</p>
-                            <Button variant='ghost' className='p-2' onClick={handleFavorites}>
+                            <Button disabled={disabled} variant='ghost' className='p-2' onClick={handleFavorites}>
                                 <Heart className={favoritesClient ? 'fill-foreground' : ''}/>
                             </Button>
                         </div>
                     </div>
                 </CardContent>
                 <CardFooter className='flex gap-3'>
-                    {cart ?
-                        (
-                            <Card className='w-full flex justify-between items-center p-0 overflow-hidden'>
-                                <Button onClick={decrement} variant='secondary' className='w-20 '>
-                                    <p className='text-xl mb-1'>-</p>
-                                </Button>
-                                <p className='text-[19px]'>{productCount}</p>
-                                <Button onClick={increment} variant='secondary' className='w-20 '>
-                                    <p className='text-xl mb-1'>+</p>
-                                </Button>
-                            </Card>
-                        )
-                        :
-                        (
-                            <Button onClick={addToCart} className="w-full">
-                                <Plus className="mr-2 h-4 w-4"/> <span>Добавить в корзину</span>
-                            </Button>
-                        )}
+                    <ButtonAddToCart productId={productId}/>
                 </CardFooter>
             </Card>
         </BackgroundGradient>

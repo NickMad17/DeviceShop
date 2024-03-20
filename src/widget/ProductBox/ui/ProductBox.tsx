@@ -35,16 +35,18 @@ const ProductBox = observer(({getProducts}: Props) => {
                 })}
             </div>
 
-            <div className='absolute left-0 top-auto center'>
+            <div className='absolute left-0 top-auto center w-full'>
                 <div className='flex gap-3 flex-wrap justify-center'>
                     {Products.error && (
-                        <Alert variant='destructive'>
-                            <TriangleAlert className="h-4 w-4 "/>
-                            <AlertTitle>Error</AlertTitle>
-                            <AlertDescription>
-                                {Products.error}
-                            </AlertDescription>
-                        </Alert>
+                        <div className='w-full'>
+                            <Alert variant='destructive' className='w-[100%]'>
+                                <TriangleAlert className="h-4 w-4 "/>
+                                <AlertTitle>Error</AlertTitle>
+                                <AlertDescription>
+                                    {Products.error}
+                                </AlertDescription>
+                            </Alert>
+                        </div>
                     )}
                     {Products.loading && (
                         <>
