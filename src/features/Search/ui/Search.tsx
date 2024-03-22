@@ -44,7 +44,7 @@ const Search = () => {
                         {names?.map(product => {
                             if (product.name.toLowerCase().startsWith(text.toLowerCase()) || text === '') {
                                 return (
-                                    <Link to={Paths.PRODUCT} key={product.id}>
+                                    <Link to={`${Paths.PRODUCT}/${product.id}`} key={product.id}>
                                         <p
                                             onClick={() => {
                                                 console.log('wdwd')
