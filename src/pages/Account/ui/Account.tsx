@@ -8,7 +8,7 @@ import {Paths} from "@/app/providers/routerProvider";
 import {CartStore} from "@/features/Cart";
 import {MainUser} from "@/features/MainUser";
 import {Products} from "@/features/Products";
-import {AccordionBox} from "@/pages/Account/ui/HistoryBox.tsx";
+import {HistoryBox} from "@/widget/HistoryBox";
 import {UserRound} from "lucide-react";
 import {Avatar} from "@/shared/shadcnui/ui/avatar.tsx";
 import {observer} from "mobx-react-lite";
@@ -43,7 +43,7 @@ const Account = observer(() => {
                         <Button onClick={logOut}>Выйти из аккаунта</Button>
                     </div>
                     <h2 className='text-center text-xl my-3'>История заказов</h2>
-                    <AccordionBox/>
+                    <HistoryBox/>
                 </div>
             </PageLayout>
         </>
