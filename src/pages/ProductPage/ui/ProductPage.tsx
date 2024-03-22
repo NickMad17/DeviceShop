@@ -24,7 +24,7 @@ const ProductPage = () => {
         <>
             <Header/>
             <PageLayout>
-                <div className='px-5 flex pt-10 gap-36 px-28'>
+                <div className='flex pt-10 gap-36 px-28'>
                     <div className=''>
                         <Swiper id={id} imgCount={img()}/>
                     </div>
