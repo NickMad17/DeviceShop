@@ -13,7 +13,7 @@ interface Props extends PropsWithChildren {
 }
 
 const AuthProvider = ({children}: Props) => {
-    const token = JSON.parse(localStorage.getItem('token')  || '""')
+    const token = JSON.parse(localStorage?.getItem('sb-jzcmkeoooytnffqgrpit-auth-token')  || '""')
     const [session, setSession] = useState<Session | null | undefined>(token ? token : null)
 
     return <AuthContext.Provider value={{
