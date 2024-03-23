@@ -9,6 +9,7 @@ export interface Product {
     price: number;
     type: string;
     favorites: boolean
+    photo_count: number
 }
 
 export enum SearchType {
