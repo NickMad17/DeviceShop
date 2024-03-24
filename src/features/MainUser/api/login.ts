@@ -11,7 +11,6 @@ export const login = async (email: string, password: string) => {
             MainUser.setLoading(false)
         })
     if (data) {
-        localStorage.setItem('token', JSON.stringify(data.session))
         MainUser.setUser(data.session)
     }
     if (error) {

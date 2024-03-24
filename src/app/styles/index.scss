@@ -72,8 +72,14 @@ body{
 }
 
 .center {
-  padding-left: calc(50% - 555px);
-  padding-right: calc(50% - 555px);
+  padding-left: calc(50% - 745px);
+  padding-right: calc(50% - 745px);
+
+  @media (max-width: 1480px) and (min-width: 1200px) {
+    padding-left: calc(50% - 555px);
+    padding-right: calc(50% - 555px);
+  }
+
   @media (max-width: 1200px) {
     padding-left: 10px;
     padding-right: 10px;

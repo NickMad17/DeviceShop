@@ -12,7 +12,6 @@ export const registration = async (email: string, password: string) => {
             MainUser.setLoading(false)
         })
     if (data) {
-        localStorage.setItem('token', JSON.stringify(data.session))
         MainUser.setUser(data.session)
         setTimeout(() => {
             userPostPublicDataBase(data.user?.id, email)

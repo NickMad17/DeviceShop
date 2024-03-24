@@ -4,9 +4,9 @@ import {Session} from "@supabase/supabase-js";
 
 class MainUser {
     // @ts-ignore
-    id:  | null | undefined| string = JSON.parse(localStorage.getItem('token'))?.user?.id || null
+    id:  | null | undefined| string = JSON.parse(localStorage?.getItem('sb-jzcmkeoooytnffqgrpit-auth-token'))?.user?.id || null
     // @ts-ignore
-    name: string | null | undefined = JSON.parse(localStorage.getItem('token'))?.user?.email || null
+    name: string | null | undefined = JSON.parse(localStorage?.getItem('sb-jzcmkeoooytnffqgrpit-auth-token'))?.user?.email || null
     data: Session | undefined | null = null
     error: string | null | undefined = null
     loading: boolean = false

@@ -15,7 +15,7 @@ const Search = () => {
     }
 
     const focus = () => {
-        setNames(Products.data)
+        setNames(Products.reserveData)
     }
 
     const blur = () => {
