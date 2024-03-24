@@ -46,7 +46,6 @@ const ProductPage = () => {
                                         return (
                                             <p key={index} className='text-xl'>{el}</p>
                                         )
-
                                     })}
                                 </div>
                                 <p className='text-2xl mt-20'>{thisProduct?.price} руб</p>
