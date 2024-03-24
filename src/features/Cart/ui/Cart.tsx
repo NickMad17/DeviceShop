@@ -11,7 +11,6 @@ const Cart = observer(
         useEffect(() => {
             CartStore.setLoading(true)
             getCart().finally(() => CartStore.setLoading(false))
-            console.log(CartStore.data)
         }, []);
         return (
             <Link to={Paths.CART}>

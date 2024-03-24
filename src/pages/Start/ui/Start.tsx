@@ -32,11 +32,12 @@ const Start = () => {
             <div ref={ref}
                  className=" min-h-[100dvh] py-20 flex flex-col bg-black">
                 <h2 className='mt-8 text-white text-center text-2xl animate-pulse'>Регестрируйтесь и забирайте</h2>
-                <div className="flex flex-col flex-grow lg:flex-row items-center justify-center  w-full gap-4 mx-auto my-10 px-8">
+                <div
+                    className="flex flex-col flex-grow lg:flex-row items-center justify-center  w-full gap-4 mx-auto my-10 px-8">
                     <StartCards/>
                 </div>
             </div>
-                <GlobeDemo/>
+            <GlobeDemo/>
             <Toaster position='top-center' expand={true} richColors/>
         </>
     );

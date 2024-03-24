@@ -1,5 +1,4 @@
 import {makeAutoObservable} from "mobx";
-
 export interface Product {
     colors: string[] | null;
     created_at: string;
@@ -55,9 +54,10 @@ class Products {
 
     setProductSearch = (text: string, params: SearchType) => {
         if (!(params === SearchType.ALL)) {
+            console.log('wierjgio')
             this.data = this.reserveData?.filter((el) => {
                 if (params === SearchType.NAME) {
-                    if (el[params].toLowerCase().startsWith(text.toLowerCase())) {
+                    if (el[params].toLowerCase().includes(text.toLowerCase())) {
                         return el
                     }
                 }
