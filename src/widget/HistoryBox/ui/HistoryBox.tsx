@@ -31,13 +31,20 @@ export function HistoryBox() {
         console.log(history)
     }, []);
 
+    const validTime = (time: number) => {
+        if (time < 10) {
+            return `0${time}`
+        }
+        return time
+    }
+
     return (
         history?.length > 0 ? (
             <Accordion type="single" collapsible className="w-full ">
                 {history?.map((historyItem: IHistoryItem) => {
                     return (
                         <AccordionItem key={historyItem.id} value={historyItem.id} className='bg-input px-2'>
-                            <AccordionTrigger>{historyItem.created_at.substring(0, 10).split("-").reverse().join("/")} {new Date(historyItem.created_at).getHours()}:{new Date(historyItem.created_at).getMinutes()}</AccordionTrigger>
+                            <AccordionTrigger>{historyItem.created_at.substring(0, 10).split("-").reverse().join("/")} {validTime(new Date(historyItem.created_at).getHours())}:{validTime(new Date(historyItem.created_at).getMinutes())}</AccordionTrigger>
                             <AccordionContent className='bg-background rounded-lg mb-3'>
                                 <div className='flex flex-col justify-between gap-3 px-8 border-b mb-2 py-5'>
                                     {historyItem.products.map(product => {
