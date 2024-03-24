@@ -1,4 +1,4 @@
-import {PageLayout, PageLoader, Swiper} from "@/shared";
+import {Loader, PageLayout, Swiper} from "@/shared";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Header} from "@/widget/Header";
@@ -10,7 +10,7 @@ const ProductPage = () => {
     const {productId} = useParams<{ productId: string }>()
     const id = productId ? +productId : 0
     const [thisProduct, setThisProduct] = useState<Product | undefined>(undefined)
-
+    const [loading, setLoading] = useState<boolean>(false)
     const img = () => {
         if (thisProduct?.photo_count) {
             return thisProduct.photo_count
@@ -19,26 +19,34 @@ const ProductPage = () => {
     }
     useEffect(() => {
         Products.setNullProduct()
-        Products.setLoading(true)
+        setLoading(true)
         getProducts()
-            .finally(
+            .then(
                 () => {
                     setThisProduct(Products.data?.find(product => product.id === id))
-                    Products.setLoading(false)
                 }
-            )
+            ).finally(() => {
+            setLoading(false)
+        })
     }, []);
 
 
     return (
         <>
             <Header/>
-            {!Products.loading ? (
-                    <PageLayout>
-                        <div className='flex pt-10 gap-36 px-28'>
-                            <div>
-                                <Swiper id={id} imgCount={img()}/>
+            <PageLayout>
+                <div className='flex pt-10 gap-36 px-28'>
+                    <div>
+                        <Swiper id={id} imgCount={img()}/>
+                    </div>
+                    {loading ?
+                        (
+                            <div className='w-full flex justify-center items-center'>
+                                <Loader/>
                             </div>
+                        )
+                        :
+                        (
                             <div>
                                 <h2 className='text-3xl mb-8'>{thisProduct?.name}</h2>
                                 <div className='flex flex-col gap-2'>
@@ -54,13 +62,10 @@ const ProductPage = () => {
                                     <ButtonAddToCart productId={id}/>
                                 </div>
                             </div>
-                        </div>
-                    </PageLayout>)
-                :
-                (
-                    <PageLoader/>
-                )
-            }
+                        )
+                    }
+                </div>
+            </PageLayout>
         </>
     );
 };

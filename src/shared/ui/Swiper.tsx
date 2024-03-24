@@ -19,7 +19,7 @@ export const Swiper = ({id, imgCount}:Props) => {
                 {Array.from({length: imgCount}).map((_, index) => (
                     <CarouselItem key={index}>
                         <div className="p-1">
-                            <Card>
+                            <Card className='bg-background border-none'>
                                 <CardContent className='flex items-center min-h-[500px]'>
                                     {/*<span className="text-4xl font-semibold">{index + 1}</span>*/}
                                     <img src={`${baseImageUrl}/products_img/${id}/${index + 1}.webp`} alt=""/>
