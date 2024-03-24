@@ -7,6 +7,8 @@ import {baseImageUrl} from "@/app/config/supabase.ts";
 import {observer} from "mobx-react-lite";
 import {Loader} from "@/shared";
 import {ButtonAddHistory} from "@/features/ButtonAddHistory";
+import {Link} from "react-router-dom";
+import {Paths} from "@/app/providers/routerProvider";
 
 interface Props {
     className: string
@@ -41,8 +43,7 @@ const CartProductBox = observer(({className}: Props) => {
                         </div>
                         <div className="flex flex-col gap-4 justify-between my-8 ">
                             <div className='flex flex-col gap-2'>
-                                <h2>{product.name}</h2>
-                                {/*<ul>{product.description?.split('<').map(el => <li>{el}</li>)}</ul>*/}
+                                <Link to={`${Paths.PRODUCT}/${product.id}`} className='text-xl hover:text-blue-400'>{product.name}</Link>
                                 <p>{product.price} руб</p>
                             </div>
                             <div className="flex justify-between gap-36 items-end">

@@ -52,13 +52,13 @@ const ProductPage = () => {
                                 <div className='flex flex-col gap-2'>
                                     {thisProduct?.description?.split('<').map((el, index) => {
                                         return (
-                                            <p key={index} className='text-xl'>{el}</p>
+                                            <p key={index} className='text-lg'>{el}</p>
                                         )
 
                                     })}
                                 </div>
                                 <p className='text-2xl mt-20'>{thisProduct?.price} руб</p>
-                                <div className="mt-20 w-5/12">
+                                <div className="mt-20 w-60">
                                     <ButtonAddToCart productId={id}/>
                                 </div>
                             </div>
