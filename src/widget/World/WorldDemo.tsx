@@ -410,7 +410,7 @@ export function GlobeDemo() {
                         Доставляем продукты по всему миру
                     </h2>
                     <p className="text-center text-base md:text-lg font-normal text-neutral-200 max-w-md mt-2 mx-auto">
-                        Попробуй прямо сейчас ... Ну или просто можещь покрутить глобус :)
+                        Попробуй прямо сейчас ... Ну или просто можешь покрутить глобус :)
                     </p>
                 </motion.div>
                 <div

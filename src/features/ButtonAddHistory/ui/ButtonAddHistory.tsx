@@ -20,7 +20,7 @@ const ButtonAddHistory = ({total}: Props) => {
             .then(() => getProducts())
             .finally(() => {
                 CartStore.reset()
-                toast.success('ваш заказ умпешно выполнен')
+                toast.success('ваш заказ успешно выполнен')
                 setLoading(false)
             })
     }

@@ -23,7 +23,7 @@ export const FormDialog = observer(
                 <DialogTrigger asChild>
                     <Button variant={variant}>{text}</Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[600px] sm:min-h-[600px] max-[600px]:h-full">
+                <DialogContent className="sm:max-w-[600px] sm:min-h-[600px] max-[600px]:h-full z-[4000]">
                     <div className='flex flex-col'>
                         <Title className='text-center text-3xl'>{isReg ? "Регистрация" : "Войти"}</Title>
                         {MainUser.loading
